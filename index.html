@@ -30,6 +30,9 @@
     import { GLTFLoader } from 'https://threejsfundamentals.org/threejs/resources/threejs/r122/examples/jsm/loaders/GLTFLoader.js';
     let cube;
     let cube2;
+    //   const texture = new THREE.TextureLoader();
+    // let material2 = new THREE.MeshBasicMaterial({ map: texture.load("https://i.imgur.com/Nmiy4b4.png") });
+    let material2;
     const fov = 45;
     const aspect = 2;  // the canvas default
     const near = 0.1;
@@ -107,6 +110,7 @@
                 // scene.add(root.children[2]);
                 // const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
                 const material = root.children[2].material;
+                material2 = root.children[3].material;
                 cube = new THREE.Mesh(cube1, material);
                 cube2 = new THREE.Mesh(cube3, material);
                 let x = root.children[3].position.x;
@@ -122,6 +126,9 @@
                 // cube.rotation.y = .002;
                 scene.add(cube);
                 scene.add(cube2);
+                setTimeout(function () {
+                    turngreen();
+                }, 5000)
                 // animate();
                 // var subdivisions = 2;
                 // var modifier = new SubdivisionModifier(subdivisions);
@@ -198,9 +205,17 @@
         renderer.render(scene, camera);
 
     }
+    function turngreen() {
+        if (cube) {
+
+            cube.material = material2;
+        }
+
+    }
 
     main();
     animate();
+
 </script>
 
 </html>
